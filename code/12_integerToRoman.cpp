@@ -20,9 +20,9 @@ public:
         ans.push_back(num / 5);
         num = num % 5;
         ans.push_back(num / 1);
-        // for (int i = 0; i < ans.size(); i++) {
-        //     cout << ans[i] << endl;
-        // }
+        for (int i = 0; i < ans.size(); i++) {
+            cout << ans[i] << endl;
+        }
         return "test";
     }
 
