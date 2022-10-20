@@ -6,69 +6,66 @@ using namespace std;
 class Solution {
 public:
     string intToRoman(int num) {
-        vector<int> ans;
-        ans.push_back(num / 1000);
-        num = num % 1000;
-        ans.push_back(num / 500);
-        num = num % 500;
-        ans.push_back(num / 100);
-        num = num % 100;
-        ans.push_back(num / 50);
-        num = num % 50;
-        ans.push_back(num / 10);
-        num = num % 10;
-        ans.push_back(num / 5);
-        num = num % 5;
-        ans.push_back(num / 1);
-        for (int i = 0; i < ans.size(); i++) {
-            cout << ans[i] << endl;
+        string res = "";
+        while(num >= 1000){
+            num -= 1000;
+            res.push_back('M');
         }
-        return "test";
-    }
-
-
-    // string intToRoman(int num) {
-    //     if (!num) return "";
-    //     // cout << num % 10 << endl;
-    //     intToRoman(num / 10);
-    //     cout << num % 10 << endl;
-    //     return "test";   
-    // }
-
-    string symbol(int num) {
-        string s = "";
-        switch (num) {
-            case 1:
-                s = "I";
-                break;
-            case 5:
-                s = "V";
-                break;
-            case 10:
-                s = "X";
-                break;
-            case 50:
-                s = "L";
-                break;
-            case 100:
-                s = "C";
-                break;
-            case 500:
-                s = "D";
-                break;
-            case 1000:
-                s = "M";
-                break;
-            default:
-                break;
+        if(num >= 900){
+            num -= 900;
+            res.append("CM");
         }
-        return s;
+        if(num >= 500){
+            num -= 500;
+            res.push_back('D');
+        }
+        if(num >= 400){
+            num -= 400;
+            res.append("CD");
+        }
+        while(num >= 100){
+            num -= 100;
+            res.push_back('C');
+        }
+        if(num >= 90){
+            num -= 90;
+            res.append("XC");
+        }
+        if(num >= 50){
+            num -= 50;
+            res.push_back('L');
+        }
+        if(num >= 40){
+            num -= 40;
+            res.append("XL");
+        }
+        while(num >= 10){
+            num -= 10;
+            res.push_back('X');
+        }
+        if(num >= 9){
+            num -= 9;
+            res.append("IX");
+        }
+        if(num >= 5){
+            num -= 5;
+            res.push_back('V');
+        }
+        if(num >= 4){
+            num -= 4;
+            res.append("IV");
+        }
+        while(num > 0){
+            num -= 1;
+            res.push_back('I');
+        }
+        return res;
     }
 };
 
 int main() {
     Solution sol;
-    int num = 123;
+    int num = 567;
     cout << sol.intToRoman(num) << endl;
     return 0;
 }
