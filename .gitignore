@@ -1,5 +1,3 @@
 .vscode
-code/.DS_Store
-code/test
-code/test.cpp
-code/linkedList.c
+ignorecode/
+executable/
