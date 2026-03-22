@@ -1,6 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -32,14 +31,5 @@ private:
 int main() {
     Solution sol;
     cout << sol.tribonacci(5) << endl;
-    // unordered_map<int, bool> um; 
-  
-    // um[12] = true; 
-    // um[6789] = false; 
-    // um[456] = true;
-    // if (um.find(23) == um.end()) 
-    //     cout << "Element Not Present\n"; 
-    // else
-    //     cout << "Element Present\n"; 
     return 0;
 }

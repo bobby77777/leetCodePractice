@@ -1,4 +1,3 @@
-.vscode
-ignorecode/
-executable/
 .DS_Store
+.vscode
+build/

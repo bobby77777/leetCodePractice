@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/max-number-of-k-sum-pairs/
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -32,4 +33,5 @@ int main() {
     vector<int> nums = {2, 3, 7, 9, 1, 5, 8};
     int k = 10;
     cout << "maxOperations = " << sol.maxOperations(nums, k) << endl;
+    return 0;
 }
