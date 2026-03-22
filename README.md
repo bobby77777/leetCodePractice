@@ -17,7 +17,17 @@ Practice repository for LeetCode and related algorithm problems in C and C++.
 
 ## Build
 
-Examples:
+Use `make` as the default workflow.
+
+```sh
+make all
+make list
+make run FILE=1_twoSum
+make run FILE=15_3Sum
+make clean
+```
+
+Manual examples:
 
 ```sh
 cc src/leetcode/1_twoSum.c -o build/bin/1_twoSum

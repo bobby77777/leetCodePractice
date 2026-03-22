@@ -1,3 +1,4 @@
+#include <climits>
 #include <iostream>
 #include <vector>
 
@@ -8,7 +9,8 @@ public:
     bool increasingTriplet(vector<int>& nums) {
         int firstSmall = INT_MAX;
         int secondSmall = INT_MAX;
-        for (int i = 0; i < nums.size(); i++) {
+
+        for (int i = 0; i < static_cast<int>(nums.size()); i++) {
             if (nums[i] <= firstSmall) {
                 firstSmall = nums[i];
             } else if (nums[i] <= secondSmall) {
@@ -17,6 +19,7 @@ public:
                 return true;
             }
         }
+
         return false;
     }
 };

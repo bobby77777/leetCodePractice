@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -6,23 +7,22 @@ using namespace std;
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        int ans = strs[0].length(), n = strs.size();
-        for(int i = 1; i < n; i++){
+        int answerLength = static_cast<int>(strs[0].length());
+
+        for (int i = 1; i < static_cast<int>(strs.size()); i++) {
             int j = 0;
-            while(j < strs[i].length() && strs[i][j] == strs[0][j])
+            while (j < static_cast<int>(strs[i].length()) && strs[i][j] == strs[0][j]) {
                 j++;
-            ans = min(ans, j);
+            }
+            answerLength = min(answerLength, j);
         }
-        return strs[0].substr(0, ans);
+
+        return strs[0].substr(0, answerLength);
     }
 };
 
 int main() {
-    vector<string> strs;
-    strs.push_back("flower");
-    strs.push_back("flow");
-    strs.push_back("flight");
-    // cout << strs[0].substr(0, 0) << endl;
+    vector<string> strs = {"flower", "flow", "flight"};
     Solution sol;
     cout << sol.longestCommonPrefix(strs) << endl;
     return 0;
