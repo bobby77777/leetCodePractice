@@ -22,8 +22,8 @@ Use `make` as the default workflow.
 ```sh
 make all
 make list
-make run FILE=1_twoSum
-make run FILE=15_3Sum
+make run FILE=1
+make run FILE=15
 make clean
 ```
 

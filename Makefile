@@ -31,20 +31,22 @@ list:
 
 run:
 ifndef FILE
-	$(error FILE is required. Example: make run FILE=15_3Sum)
+	$(error FILE is required. Example: make run FILE=1 or make run FILE=1_twoSum)
 endif
-	@src=""
-	@for ext in c cpp; do \
-		if [ -f "$(SRC_DIR)/$(FILE).$$ext" ]; then \
-			src="$(SRC_DIR)/$(FILE).$$ext"; \
-			break; \
-		fi; \
-	done; \
-	if [ -z "$$src" ]; then \
-		echo "No source file found for $(FILE) in $(SRC_DIR)"; \
+	@matches=$$(ls $(SRC_DIR)/$(FILE)_*.c $(SRC_DIR)/$(FILE)_*.cpp $(SRC_DIR)/$(FILE).c $(SRC_DIR)/$(FILE).cpp 2>/dev/null); \
+	if [ -z "$$matches" ]; then \
+		echo "No source file found for '$(FILE)' in $(SRC_DIR)"; \
 		exit 1; \
 	fi; \
-	$(MAKE) "$(BUILD_DIR)/$(FILE)" && "./$(BUILD_DIR)/$(FILE)"
+	count=$$(echo "$$matches" | wc -w); \
+	if [ "$$count" -gt 1 ]; then \
+		echo "Multiple matches for '$(FILE)': $$matches"; \
+		exit 1; \
+	fi; \
+	src="$$matches"; \
+	base=$$(basename "$$src"); \
+	name="$${base%.*}"; \
+	$(MAKE) "$(BUILD_DIR)/$$name" && "./$(BUILD_DIR)/$$name"
 
 clean:
 	rm -rf build/*
