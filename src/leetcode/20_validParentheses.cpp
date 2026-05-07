@@ -6,30 +6,35 @@
 
 using namespace std;
 
-bool isValid(string s) {
-    stack<char> st;
-    unordered_map<char, char> map = {
-        {')', '('},
-        {']', '['},
-        {'}', '{'}
-    };
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        unordered_map<char, char> map = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}
+        };
 
-    for (char c : s) {
-        if (map.count(c)) {
-            if (st.empty() || st.top() != map[c]) {
-                return false;
+        for (char c : s) {
+            if (map.count(c)) {
+                if (st.empty() || st.top() != map[c]) {
+                    return false;
+                }
+                st.pop();
+            } else {
+                st.push(c);
             }
-            st.pop();
-        } else {
-            st.push(c);
         }
-    }
 
-    return st.empty();
-}
+        return st.empty();
+    }
+};
+
 
 int main() {
+    Solution solution;
     string s = "([)]";
-    cout << (isValid(s) ? "valid" : "invalid") << endl;
+    cout << (solution.isValid(s) ? "valid" : "invalid") << endl;
     return 0;
 }
